@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 const AuthSuccess = () => {
   const navigate = useNavigate();
