@@ -2,14 +2,18 @@ import express from "express";
 import passport from "passport";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
-import "./config/config.passport.js";
+
 
 dotenv.config();
+import "./config/config.passport.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cookieParser());
+
+app.use(cors({origin:"http://localhost:5173/"}));
 app.use(express.json());
 
 

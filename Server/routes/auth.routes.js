@@ -6,9 +6,6 @@ import passport from "passport";
 const router = express.Router();
 
 
-
-
-
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -18,13 +15,10 @@ router.get(
 
 router.get(
   "/google/callback",
-  passport.authenticate("google", {
-    session: false,
-  }),
+  passport.authenticate("google", { session: false }),
   (req, res) => {
-    const { token } = req.user;
     res.redirect(
-      `http://localhost:3000/login/success?token=${token}`
+      `http://localhost:5173/login/success?token=${req.user.token}`
     );
   }
 );
