@@ -1,23 +1,27 @@
-import express from "express"
-import dotenv from  "dotenv"
-import passport from "passport"
-import router from "./routes/auth.routes.js"
-import profileRoutes from "./routes/profile.routes.js"
+import express from "express";
+import passport from "passport";
+import dotenv from "dotenv";
+import cors from "cors";
+import authRoutes from "./routes/auth.routes.js";
+import "./config/config.passport.js";
+
+dotenv.config();
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
 
 
-dotenv.config()
-
-const app = express()
 
 
-app.use(passport.initialize())
+app.use(passport.initialize());
 
-app.use("/auth",router)
-app.use("/api", profileRoutes);
 
-const port =process.env.PORT||3000;
-app.listen(port,()=>{
- console.log(`http://localhost:${port}/`)
-})
+app.use("/auth", authRoutes);
 
+const PORT = process.env.PORT
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}/`);
+});
 

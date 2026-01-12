@@ -11,3 +11,4 @@ router.get("/profile", authMiddleware, (req, res) => {
 });
 
 export default router;
+  
