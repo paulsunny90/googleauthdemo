@@ -6,7 +6,7 @@ const Dashboard = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/api/profile", {
+    fetch("http://localhost:3000/api/", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
